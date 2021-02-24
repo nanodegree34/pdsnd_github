@@ -20,7 +20,7 @@ def get_filters():
 
     # get user input for city (chicago, new york city, washington).
     city = input('Please enter the city for which you would like to see data \n - Chicago, Washington or New York \n')
-    # make sure the input of the city is correct
+    # validation of city input
     valid_cities = ['Chicago', 'chicago', 'Washington', 'washington', 'New York', 'new york']
     while city not in valid_cities:
         print('Please enter either Chicago, Washington or New York.\n')
@@ -28,7 +28,7 @@ def get_filters():
 
     # get user input for the desired time filter
     time_filter_request = input('Would you like to filter the data by "month", "day", "both" or not at all? \nPlease type "none" for no time filter. \n')
-    # make sure the input of the time filter is correct
+    # validation of input (desired time filter)
     valid_time_filters = ['month','Month','Day','day','Both','both','None','none']
     if time_filter_request not in valid_time_filters:
         print('Your input does not match with the possible filter options. Therefore no filter will be applied.')
@@ -36,7 +36,7 @@ def get_filters():
     # get user input for month as a number
     if time_filter_request == 'month' or time_filter_request == 'both':
         month = input('Which month between January and June would you like to select? \n- please give the month as a numerical value, i.e. January = 1, February = 2 etc. \n')
-        # make sure the input for the month filter is correct
+        # validation of input (selected month)
         valid_months = ['1','2','3','4','5','6']
         while month not in valid_months:
             print('Please enter a number between 1 and 6.\n')
@@ -47,7 +47,7 @@ def get_filters():
     # get user input for day of week as a number
     if time_filter_request == 'day' or time_filter_request == 'both':
         day = input('Which day would you like to select? \n- please give the day of the week as a number with Monday=0, Sunday=6. \n')
-        # make sure the input for the day filter is correct
+        # validation of input (selected day)
         valid_days = ['0','1','2','3','4','5','6']
         while day not in valid_days:
             print('Please enter a number between 0 and 6.\n')
@@ -76,6 +76,7 @@ def print_rawdata(df):
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
+    If no filter is selected, all data for the specified city will be considered.
 
     Args:
         (str) city - name of the city to analyze
@@ -208,7 +209,7 @@ def user_stats(df):
     # Handle error in case there is no data for 'birth year' in the selected file
     except KeyError:
         print('No birth year data available')
-        
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
