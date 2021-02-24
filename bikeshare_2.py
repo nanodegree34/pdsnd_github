@@ -66,11 +66,11 @@ def print_rawdata(df):
     # variable 'counter' to select the corresponding records from the DataFrame
     counter = 0
     # select 5 records of the DataFrame, continue while the user enters 'y'
-    while rawdata_request == 'Yes' or rawdata_request == 'yes':
+    while rawdata_request.lower() == 'yes':
         print(df.iloc[counter:counter+5])
         counter += 5
         rawdata_request = input('Would you like to see more? Enter yes or no. \n')
-        if rawdata_request != 'Yes' or rawdata_request != 'yes':
+        if rawdata_request.lower() != 'yes':
             print('Ok, no more individual trip data will be shown.')
 
 def load_data(city, month, day):
