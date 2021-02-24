@@ -62,15 +62,15 @@ def get_filters():
 def print_rawdata(df):
     """ Asks user whether he/she wants to see raw data and print 5 records each time """
 
-    rawdata_request = input('Would you like to see individual trip data? (Y/N) \n')
+    rawdata_request = input('Would you like to see individual trip data? Enter yes or no. \n')
     # variable 'counter' to select the corresponding records from the DataFrame
     counter = 0
     # select 5 records of the DataFrame, continue while the user enters 'y'
-    while rawdata_request == 'Y' or rawdata_request == 'y':
+    while rawdata_request == 'Yes' or rawdata_request == 'yes':
         print(df.iloc[counter:counter+5])
         counter += 5
-        rawdata_request = input('Would you like to see more? (Y/N)')
-        if rawdata_request != 'Y' or rawdata_request != 'y':
+        rawdata_request = input('Would you like to see more? Enter yes or no. \n')
+        if rawdata_request != 'Yes' or rawdata_request != 'yes':
             print('Ok, no more individual trip data will be shown.')
 
 def load_data(city, month, day):
